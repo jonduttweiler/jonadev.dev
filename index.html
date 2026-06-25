@@ -1,667 +1,857 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jonatan — Systems Engineer · Web3 Builder</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-:root {
-  --bg: #090E10;
-  --bg-elevated: #0F1519;
-  --bg-card: #141C22;
-  --border: #1E2A33;
-  --text: #D4D4D4;
-  --text-muted: #7A8A96;
-  --text-bright: #EFF3F6;
-  --accent-green: #34D399;
-  --accent-green-dim: rgba(52,211,153,0.08);
-  --accent-amber: #FBBF24;
-  --accent-amber-dim: rgba(251,191,36,0.07);
-  --font-display: 'Space Grotesk', sans-serif;
-  --font-body: 'Source Serif 4', Georgia, serif;
-  --font-mono: 'JetBrains Mono', monospace;
-}
+  <title>Jonatan — Systems Engineer · Web3 Builder</title>
+  <meta name="description"
+    content="Full-stack systems engineer with 10+ years building smart contracts, dApps, and complete platforms. Solidity, Next.js, Hardhat. Focused on blockchain for real-world impact — reforestation traceability, decentralized finance, RWA tokenization.">
+  <meta name="author" content="Jonatan">
+  <link rel="canonical" href="https://jonadev.dev/">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 
-html { scroll-behavior: smooth; }
+  <!-- Open Graph -->
+  <meta property="og:image" content="https://jonadev.dev/og-image.png">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://jonadev.dev/">
+  <meta property="og:title" content="Jonatan — Systems Engineer · Web3 Builder">
+  <meta property="og:description"
+    content="Full-stack engineer building smart contracts, dApps, and complete platforms. Solidity, Next.js, Hardhat. Blockchain for real-world impact.">
+  <meta property="og:locale" content="en">
 
-body {
-  font-family: var(--font-body);
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
+  <!-- Twitter / X -->
+  <meta name="twitter:image" content="https://jonadev.dev/og-image.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Jonatan — Systems Engineer · Web3 Builder">
+  <meta name="twitter:description"
+    content="Full-stack engineer building smart contracts, dApps, and complete platforms. Solidity, Next.js, Hardhat. Blockchain for real-world impact.">
 
-::selection {
-  background: var(--accent-green);
-  color: var(--bg);
-}
+  <!-- Additional SEO -->
+  <meta name="robots" content="index, follow">
+  <meta name="keywords"
+    content="Web3 developer, Solidity, smart contracts, dApp, blockchain, Hardhat, Next.js, full-stack engineer, reforestation, RWA tokenization, EVM, OpenZeppelin">
+  <meta name="theme-color" content="#090E10">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ── NAV ── */
-nav {
-  position: fixed; top: 0; left: 0; right: 0;
-  z-index: 100;
-  background: rgba(9,14,16,0.85);
-  backdrop-filter: blur(16px);
-  border-bottom: 1px solid var(--border);
-}
-.nav-inner {
-  max-width: 1120px; margin: 0 auto;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 0.9rem 2rem;
-}
-.nav-logo {
-  font-family: var(--font-display);
-  font-weight: 700; font-size: 1.1rem;
-  color: var(--text-bright);
-  text-decoration: none;
-  letter-spacing: -0.02em;
-}
-.nav-logo span { color: var(--accent-green); }
-.nav-links { display: flex; gap: 2rem; list-style: none; }
-.nav-links a {
-  font-family: var(--font-display);
-  font-size: 0.82rem; font-weight: 500;
-  color: var(--text-muted);
-  text-decoration: none;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  transition: color 0.2s;
-}
-.nav-links a:hover { color: var(--accent-green); }
+    :root {
+      --bg: #090E10;
+      --bg-elevated: #0F1519;
+      --bg-card: #141C22;
+      --border: #1E2A33;
+      --text: #D4D4D4;
+      --text-muted: #7A8A96;
+      --text-bright: #EFF3F6;
+      --accent-green: #34D399;
+      --accent-green-dim: rgba(52, 211, 153, 0.08);
+      --accent-amber: #FBBF24;
+      --accent-amber-dim: rgba(251, 191, 36, 0.07);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Source Serif 4', Georgia, serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
 
-/* ── LAYOUT ── */
-.container { max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-/* ── HERO ── */
-.hero {
-  padding: 11rem 0 6rem;
-  position: relative;
-}
-.hero::before {
-  content: '';
-  position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-  background:
-    radial-gradient(ellipse 60% 50% at 15% 20%, rgba(52,211,153,0.04), transparent),
-    radial-gradient(ellipse 40% 40% at 85% 70%, rgba(251,191,36,0.03), transparent);
-  pointer-events: none;
-}
-.hero-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--accent-green);
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  margin-bottom: 1.2rem;
-}
-.hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2.4rem, 5.5vw, 4.2rem);
-  font-weight: 700;
-  color: var(--text-bright);
-  line-height: 1.12;
-  letter-spacing: -0.03em;
-  max-width: 780px;
-}
-.hero h1 em {
-  font-style: normal;
-  color: var(--accent-green);
-}
-.hero-sub {
-  margin-top: 1.6rem;
-  font-size: 1.15rem;
-  color: var(--text-muted);
-  max-width: 560px;
-  line-height: 1.75;
-}
-.hero-cta {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  margin-top: 2.4rem;
-  font-family: var(--font-display);
-  font-size: 0.88rem; font-weight: 600;
-  color: var(--bg);
-  background: var(--accent-green);
-  padding: 0.75rem 1.6rem;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: background 0.2s, transform 0.15s;
-}
-.hero-cta:hover { background: #2bc48a; transform: translateY(-1px); }
-.hero-cta svg { width: 16px; height: 16px; }
+    body {
+      font-family: var(--font-body);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
 
-/* ── SECTION ── */
-section { padding: 5rem 0; }
-.section-label {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--accent-green);
-  margin-bottom: 0.6rem;
-}
-.section-title {
-  font-family: var(--font-display);
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: var(--text-bright);
-  letter-spacing: -0.02em;
-  margin-bottom: 1rem;
-}
+    ::selection {
+      background: var(--accent-green);
+      color: var(--bg);
+    }
 
-/* ── ABOUT ── */
-.about-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
-  align-items: start;
-}
-.about-text p { margin-bottom: 1rem; }
-.about-stats {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.2rem;
-}
-.stat-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.4rem;
-}
-.stat-number {
-  font-family: var(--font-display);
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--accent-green);
-  line-height: 1;
-}
-.stat-label {
-  font-family: var(--font-display);
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  margin-top: 0.4rem;
-  letter-spacing: 0.02em;
-}
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background: rgba(9, 14, 16, 0.85);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
 
-/* ── PROJECTS ── */
-.projects-list { display: flex; flex-direction: column; gap: 2rem; margin-top: 2rem; }
+    .nav-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 2rem;
+    }
 
-.project-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  padding: 2.4rem;
-  transition: border-color 0.25s, box-shadow 0.25s;
-  position: relative;
-  overflow: hidden;
-}
-.project-card:hover {
-  border-color: rgba(52,211,153,0.25);
-  box-shadow: 0 0 40px rgba(52,211,153,0.04);
-}
-.project-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 1.5rem;
-  margin-bottom: 1rem;
-}
-.project-year {
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--accent-amber);
-  letter-spacing: 0.06em;
-  background: var(--accent-amber-dim);
-  padding: 0.25rem 0.6rem;
-  border-radius: 4px;
-  white-space: nowrap;
-}
-.project-name {
-  font-family: var(--font-display);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--text-bright);
-  letter-spacing: -0.01em;
-}
-.project-tagline {
-  font-family: var(--font-display);
-  font-size: 0.88rem;
-  color: var(--accent-green);
-  margin-bottom: 0.8rem;
-  font-weight: 500;
-}
-.project-desc {
-  color: var(--text);
-  font-size: 0.98rem;
-  margin-bottom: 1.2rem;
-  max-width: 680px;
-}
-.project-highlights {
-  display: flex;
-  flex-direction: column;
-  gap: 0.45rem;
-  margin-bottom: 1.4rem;
-}
-.project-highlights li {
-  list-style: none;
-  font-size: 0.9rem;
-  color: var(--text-muted);
-  padding-left: 1.2rem;
-  position: relative;
-}
-.project-highlights li::before {
-  content: '→';
-  position: absolute; left: 0;
-  color: var(--accent-green);
-  font-family: var(--font-mono);
-  font-size: 0.8rem;
-}
-.project-tech {
-  display: flex; flex-wrap: wrap; gap: 0.5rem;
-}
-.tech-tag {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
-  color: var(--text-muted);
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  padding: 0.25rem 0.65rem;
-  border-radius: 4px;
-  letter-spacing: 0.03em;
-}
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--text-bright);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
 
-/* ── STACK ── */
-.stack-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.2rem;
-  margin-top: 2rem;
-}
-.stack-group {
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.6rem;
-}
-.stack-group-title {
-  font-family: var(--font-display);
-  font-size: 0.82rem;
-  font-weight: 600;
-  color: var(--text-bright);
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  margin-bottom: 0.8rem;
-}
-.stack-items {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  line-height: 2;
-}
+    .nav-logo span {
+      color: var(--accent-green);
+    }
 
-/* ── CONTACT ── */
-.contact-section {
-  padding: 5rem 0 6rem;
-  text-align: center;
-}
-.contact-section .section-title {
-  font-size: 2rem;
-}
-.contact-text {
-  color: var(--text-muted);
-  max-width: 480px;
-  margin: 0.5rem auto 2rem;
-}
-.contact-links {
-  display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;
-}
-.contact-link {
-  font-family: var(--font-display);
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: var(--text-muted);
-  text-decoration: none;
-  padding: 0.65rem 1.4rem;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  transition: color 0.2s, border-color 0.2s;
-}
-.contact-link:hover {
-  color: var(--accent-green);
-  border-color: var(--accent-green);
-}
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
 
-/* ── DIVIDER ── */
-.divider {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, var(--border), transparent);
-  margin: 0;
-}
+    .nav-links a {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
 
-/* ── FOOTER ── */
-footer {
-  padding: 2rem 0;
-  text-align: center;
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  color: var(--text-muted);
-  letter-spacing: 0.04em;
-}
+    .nav-links a:hover {
+      color: var(--accent-green);
+    }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .container { padding: 0 1.2rem; }
-  .hero { padding: 8rem 0 4rem; }
-  .about-grid { grid-template-columns: 1fr; gap: 2rem; }
-  .project-card { padding: 1.6rem; }
-  .project-header { flex-direction: column-reverse; gap: 0.6rem; }
-}
+    /* ── LAYOUT ── */
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
 
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
+    /* ── HERO ── */
+    .hero {
+      padding: 11rem 0 6rem;
+      position: relative;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 15% 20%, rgba(52, 211, 153, 0.04), transparent),
+        radial-gradient(ellipse 40% 40% at 85% 70%, rgba(251, 191, 36, 0.03), transparent);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--accent-green);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 1.2rem;
+    }
+
+    .hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: 700;
+      color: var(--text-bright);
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      max-width: 780px;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      color: var(--accent-green);
+    }
+
+    .hero-sub {
+      margin-top: 1.6rem;
+      font-size: 1.15rem;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.75;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 2.4rem;
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--bg);
+      background: var(--accent-green);
+      padding: 0.75rem 1.6rem;
+      border-radius: 6px;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .hero-cta:hover {
+      background: #2bc48a;
+      transform: translateY(-1px);
+    }
+
+    .hero-cta svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    /* ── SECTION ── */
+    section {
+      padding: 5rem 0;
+    }
+
+    .section-label {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent-green);
+      margin-bottom: 0.6rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      letter-spacing: -0.02em;
+      margin-bottom: 1rem;
+    }
+
+    /* ── ABOUT ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .about-text p {
+      margin-bottom: 1rem;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+
+    .stat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.4rem;
+    }
+
+    .stat-number {
+      font-family: var(--font-display);
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-green);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-family: var(--font-display);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      margin-top: 0.4rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-list {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 2.4rem;
+      transition: border-color 0.25s, box-shadow 0.25s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card:hover {
+      border-color: rgba(52, 211, 153, 0.25);
+      box-shadow: 0 0 40px rgba(52, 211, 153, 0.04);
+    }
+
+    .project-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .project-year {
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--accent-amber);
+      letter-spacing: 0.06em;
+      background: var(--accent-amber-dim);
+      padding: 0.25rem 0.6rem;
+      border-radius: 4px;
+      white-space: nowrap;
+    }
+
+    .project-name {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: var(--text-bright);
+      letter-spacing: -0.01em;
+    }
+
+    .project-tagline {
+      font-family: var(--font-display);
+      font-size: 0.88rem;
+      color: var(--accent-green);
+      margin-bottom: 0.8rem;
+      font-weight: 500;
+    }
+
+    .project-desc {
+      color: var(--text);
+      font-size: 0.98rem;
+      margin-bottom: 1.2rem;
+      max-width: 680px;
+    }
+
+    .project-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 0.45rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .project-highlights li {
+      list-style: none;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    .project-highlights li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent-green);
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+    }
+
+    .project-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tech-tag {
+      font-family: var(--font-mono);
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      background: var(--bg-elevated);
+      border: 1px solid var(--border);
+      padding: 0.25rem 0.65rem;
+      border-radius: 4px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── STACK ── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .stack-group {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.6rem;
+    }
+
+    .stack-group-title {
+      font-family: var(--font-display);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--text-bright);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.8rem;
+    }
+
+    .stack-items {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 2;
+    }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      padding: 5rem 0 6rem;
+      text-align: center;
+    }
+
+    .contact-section .section-title {
+      font-size: 2rem;
+    }
+
+    .contact-text {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0.5rem auto 2rem;
+    }
+
+    .contact-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .contact-link {
+      font-family: var(--font-display);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      text-decoration: none;
+      padding: 0.65rem 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .contact-link:hover {
+      color: var(--accent-green);
+      border-color: var(--accent-green);
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border), transparent);
+      margin: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 0;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .container {
+        padding: 0 1.2rem;
+      }
+
+      .hero {
+        padding: 8rem 0 4rem;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .project-card {
+        padding: 1.6rem;
+      }
+
+      .project-header {
+        flex-direction: column-reverse;
+        gap: 0.6rem;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Jonatan",
+  "url": "https://jonadev.dev",
+  "jobTitle": "Systems Engineer",
+  "description": "Full-stack Web3 engineer building smart contracts, dApps, and complete platforms for real-world impact.",
+  "knowsAbout": ["Solidity", "Smart Contracts", "Web3", "Next.js", "Hardhat", "EVM", "Blockchain", "dApp Development"],
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "Patagonia",
+    "addressCountry": "AR"
+  }
 }
-</style>
+</script>
 </head>
+
 <body>
 
-<!-- NAV -->
-<nav>
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">jona<span>.</span></a>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#work">Work</a></li>
-      <li><a href="#stack">Stack</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
-</nav>
+  <!-- NAV -->
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">jona<span>.</span></a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#stack">Stack</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
 
-<!-- HERO -->
-<header class="hero">
-  <div class="container">
-    <div class="hero-eyebrow">Systems Engineer · Patagonia, Argentina</div>
-    <h1>I build <em>complete platforms</em> where blockchain meets the real&nbsp;world</h1>
-    <p class="hero-sub">
-      Full-stack engineer with 10+ years shipping distributed systems, smart contracts, and the frontends that make them usable. Focused on projects where decentralization solves something concrete — reforestation traceability, financial inclusion, real-world asset tokenization.
-    </p>
-    <a href="#work" class="hero-cta">
-      See recent work
-      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
-    </a>
-  </div>
-</header>
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">Systems Engineer · Patagonia, Argentina</div>
+      <h1>I build <em>complete platforms</em> where blockchain meets the real&nbsp;world</h1>
+      <p class="hero-sub">
+        Full-stack engineer with 10+ years shipping distributed systems, smart contracts, and the frontends that make
+        them usable. Focused on projects where decentralization solves something concrete — reforestation traceability,
+        financial inclusion, real-world asset tokenization.
+      </p>
+      <a href="#work" class="hero-cta">
+        See recent work
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M3 8h10M9 4l4 4-4 4" />
+        </svg>
+      </a>
+    </div>
+  </header>
 
-<div class="divider"></div>
+  <div class="divider"></div>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="section-label">About</div>
-    <div class="about-grid">
-      <div class="about-text">
-        <p>
-          I started in performance engineering for distributed systems before moving into building things end-to-end. Since 2020, I've been deep in Web3 — designing smart contracts, deploying tokens, building dApps, and wiring it all together with modern frontends and backends.
-        </p>
-        <p>
-          Most of my work sits at the intersection of blockchain and social impact: platforms for decentralized guarantees, forest traceability systems that meet EU regulations, and tokenization of real-world reforestation projects. I typically build the full stack alone — from Solidity contracts and Hardhat testing to Next.js interfaces and MongoDB backends.
-        </p>
-        <p>
-          I like to fix things, solve problems, and improve the way things work. Based in El Bolsón, Patagonia.
-        </p>
-      </div>
-      <div class="about-stats">
-        <div class="stat-card">
-          <div class="stat-number">10+</div>
-          <div class="stat-label">Years of experience</div>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label">About</div>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            I started in performance engineering for distributed systems before moving into building things end-to-end.
+            Since 2020, I've been deep in Web3 — designing smart contracts, deploying tokens, building dApps, and wiring
+            it all together with modern frontends and backends.
+          </p>
+          <p>
+            Most of my work sits at the intersection of blockchain and social impact: platforms for decentralized
+            guarantees, forest traceability systems that meet EU regulations, and tokenization of real-world
+            reforestation projects. I typically build the full stack alone — from Solidity contracts and Hardhat testing
+            to Next.js interfaces and MongoDB backends.
+          </p>
+          <p>
+            I like to fix things, solve problems, and improve the way things work. Based in El Bolsón, Patagonia.
+          </p>
         </div>
-        <div class="stat-card">
-          <div class="stat-number">5+</div>
-          <div class="stat-label">Smart contract systems shipped</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">3</div>
-          <div class="stat-label">EVM networks deployed to</div>
-        </div>
-        <div class="stat-card">
-          <div class="stat-number">Full</div>
-          <div class="stat-label">Stack — contracts to UI</div>
+        <div class="about-stats">
+          <div class="stat-card">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Years of experience</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">5+</div>
+            <div class="stat-label">Smart contract systems shipped</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">3</div>
+            <div class="stat-label">EVM networks deployed to</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number">Full</div>
+            <div class="stat-label">Stack — contracts to UI</div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="divider"></div>
+  <div class="divider"></div>
 
-<!-- PROJECTS -->
-<section id="work">
-  <div class="container">
-    <div class="section-label">Selected Work</div>
-    <div class="section-title">Projects I've built</div>
+  <!-- PROJECTS -->
+  <section id="work">
+    <div class="container">
+      <div class="section-label">Selected Work</div>
+      <div class="section-title">Projects I've built</div>
 
-    <div class="projects-list">
+      <div class="projects-list">
 
-      <!-- Bosques Verificados -->
-      <article class="project-card">
-        <div class="project-header">
-          <div>
-            <div class="project-name">Bosques Verificados</div>
-            <div class="project-tagline">Wood supply chain traceability for EUDR compliance</div>
+        <!-- Bosques Verificados -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-name">Bosques Verificados</div>
+              <div class="project-tagline">Wood supply chain traceability for EUDR compliance</div>
+            </div>
+            <span class="project-year">2025</span>
           </div>
-          <span class="project-year">2025</span>
-        </div>
-        <p class="project-desc">
-          Built solo — a full traceability system for the wood supply chain, designed to meet European Union Deforestation Regulation requirements. Producers register products linked to their land plots, and the system uses WHISP (Open Foris) for geospatial verification of forest existence.
-        </p>
-        <ul class="project-highlights">
-          <li>Smart contract architecture inspired by EPCIS (GS1) for event recording across the full supply chain — creation, transformation, transfers</li>
-          <li>Queryable ancestry system to trace any final product back to its origin land and full event history</li>
-          <li>Deforestation risk scoring associated with each product based on geospatial data</li>
-          <li>Separate smart contract for document integrity verification via on-chain hash storage</li>
-        </ul>
-        <div class="project-tech">
-          <span class="tech-tag">Next.js</span>
-          <span class="tech-tag">Solidity</span>
-          <span class="tech-tag">Hardhat</span>
-          <span class="tech-tag">OpenZeppelin</span>
-          <span class="tech-tag">WHISP / Open Foris</span>
-        </div>
-      </article>
-
-      <!-- Reforestar -->
-      <article class="project-card">
-        <div class="project-header">
-          <div>
-            <div class="project-name">Reforestar</div>
-            <div class="project-tagline">Collaborative reforestation tracking platform</div>
+          <p class="project-desc">
+            Built solo — a full traceability system for the wood supply chain, designed to meet European Union
+            Deforestation Regulation requirements. Producers register products linked to their land plots, and the
+            system uses WHISP (Open Foris) for geospatial verification of forest existence.
+          </p>
+          <ul class="project-highlights">
+            <li>Smart contract architecture inspired by EPCIS (GS1) for event recording across the full supply chain —
+              creation, transformation, transfers</li>
+            <li>Queryable ancestry system to trace any final product back to its origin land and full event history</li>
+            <li>Deforestation risk scoring associated with each product based on geospatial data</li>
+            <li>Separate smart contract for document integrity verification via on-chain hash storage</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">Solidity</span>
+            <span class="tech-tag">Hardhat</span>
+            <span class="tech-tag">OpenZeppelin</span>
+            <span class="tech-tag">WHISP / Open Foris</span>
           </div>
-          <span class="project-year">2026</span>
-        </div>
-        <p class="project-desc">
-          Born after the 2026 Patagonia wildfires — a platform that enables collaborative reforestation projects, allowing communities and organizations to coordinate planting efforts, track the evolution of restored areas, and measure environmental impact over time. Currently under active development.
-        </p>
-        <ul class="project-highlights">
-          <li>Collaborative project management for reforestation initiatives across multiple stakeholders</li>
-          <li>Progress tracking and evolution monitoring of reforested areas</li>
-          <li>Impact measurement and reporting for participating communities and organizations</li>
-        </ul>
-        <div class="project-tech">
-          <span class="tech-tag">Next.js</span>
-          <span class="tech-tag">In development</span>
-        </div>
-      </article>
+        </article>
 
-      <!-- Avaldao -->
-      <article class="project-card">
-        <div class="project-header">
-          <div>
-            <div class="project-name">Avaldao</div>
-            <div class="project-tagline">Decentralized mutual guarantees platform</div>
+        <!-- Reforestar -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-name">Reforestar</div>
+              <div class="project-tagline">Collaborative reforestation tracking platform</div>
+            </div>
+            <span class="project-year">2026</span>
           </div>
-          <span class="project-year">2022 — present</span>
-        </div>
-        <p class="project-desc">
-          A platform that enables small businesses (PyMEs) to access decentralized guarantees on-chain. Originally started in 2022, the rapid evolution of the blockchain ecosystem required a full rebuild with current tooling. The new dApp is deployed on Rootstock and designed for EVM compatibility.
-        </p>
-        <ul class="project-highlights">
-          <li>Authentication via wallet message signing combined with email/password flows</li>
-          <li>Smart contract interaction through Reown AppKit with transaction state management</li>
-          <li>New contracts being developed with full test coverage to prevent production issues found in the original deployment</li>
-          <li>Role-based access with per-network caching in MongoDB</li>
-        </ul>
-        <div class="project-tech">
-          <span class="tech-tag">Next.js</span>
-          <span class="tech-tag">Solidity</span>
-          <span class="tech-tag">Reown AppKit</span>
-          <span class="tech-tag">Hardhat</span>
-          <span class="tech-tag">MongoDB</span>
-          <span class="tech-tag">Rootstock / EVM</span>
-        </div>
-      </article>
-
-      <!-- ForestMaker -->
-      <article class="project-card">
-        <div class="project-header">
-          <div>
-            <div class="project-name">ForestMaker</div>
-            <div class="project-tagline">Real-world asset tokenization for reforestation</div>
+          <p class="project-desc">
+            Born after the 2026 Patagonia wildfires — a platform that enables collaborative reforestation projects,
+            allowing communities and organizations to coordinate planting efforts, track the evolution of restored
+            areas, and measure environmental impact over time. Currently under active development.
+          </p>
+          <ul class="project-highlights">
+            <li>Collaborative project management for reforestation initiatives across multiple stakeholders</li>
+            <li>Progress tracking and evolution monitoring of reforested areas</li>
+            <li>Impact measurement and reporting for participating communities and organizations</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">In development</span>
           </div>
-          <span class="project-year">2023</span>
-        </div>
-        <p class="project-desc">
-          A platform enabling investors to participate in forestry projects through tokenized assets. Each reforestation project issues its own ERC-20 extended tokens. Investors purchase tokens representing their stake and can claim periodic interest payments.
-        </p>
-        <ul class="project-highlights">
-          <li>Custom ERC-20 token extensions built with OpenZeppelin — including a debt token implementing CMTAT standards with interest rate distribution at cutoff dates</li>
-          <li>Extensive smart contract testing that uncovered and resolved critical issues pre-launch</li>
-          <li>Token deployment orchestrated from a .NET backend</li>
-          <li>Flutter mobile app for token purchase and interest claiming, plus a Next.js dApp under development at dapp.forestmaker.org</li>
-          <li>Angular backoffice for project administration</li>
-        </ul>
-        <div class="project-tech">
-          <span class="tech-tag">Solidity</span>
-          <span class="tech-tag">OpenZeppelin</span>
-          <span class="tech-tag">Hardhat</span>
-          <span class="tech-tag">Flutter</span>
-          <span class="tech-tag">Next.js</span>
-          <span class="tech-tag">Angular</span>
-          <span class="tech-tag">.NET</span>
-        </div>
-      </article>
+        </article>
 
-      <!-- EPA Tienda -->
-      <article class="project-card">
-        <div class="project-header">
-          <div>
-            <div class="project-name">EPA Tienda</div>
-            <div class="project-tagline">E-commerce platform for cosmetics &amp; hair supply</div>
+        <!-- Avaldao -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-name">Avaldao</div>
+              <div class="project-tagline">Decentralized mutual guarantees platform</div>
+            </div>
+            <span class="project-year">2022 — present</span>
           </div>
-          <span class="project-year">2026</span>
-        </div>
-        <p class="project-desc">
-          A custom e-commerce store built from scratch for a cosmetics business in Santa Fe. Full implementation including product catalog, payment integration, authentication, and cloud storage for product images.
-        </p>
-        <ul class="project-highlights">
-          <li>Mercado Pago payment integration with NextAuth authentication</li>
-          <li>PostgreSQL via Neon with Prisma ORM, Cloudflare R2 for media storage</li>
-          <li>Full deployment pipeline on Vercel with custom domain configuration</li>
-        </ul>
-        <div class="project-tech">
-          <span class="tech-tag">Next.js</span>
-          <span class="tech-tag">PostgreSQL</span>
-          <span class="tech-tag">Prisma</span>
-          <span class="tech-tag">Cloudflare R2</span>
-          <span class="tech-tag">Mercado Pago</span>
-          <span class="tech-tag">Tailwind CSS</span>
-        </div>
-      </article>
+          <p class="project-desc">
+            A platform that enables small businesses (PyMEs) to access decentralized guarantees on-chain. Originally
+            started in 2022, the rapid evolution of the blockchain ecosystem required a full rebuild with current
+            tooling. The new dApp is deployed on Rootstock and designed for EVM compatibility.
+          </p>
+          <ul class="project-highlights">
+            <li>Authentication via wallet message signing combined with email/password flows</li>
+            <li>Smart contract interaction through Reown AppKit with transaction state management</li>
+            <li>New contracts being developed with full test coverage to prevent production issues found in the original
+              deployment</li>
+            <li>Role-based access with per-network caching in MongoDB</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">Solidity</span>
+            <span class="tech-tag">Reown AppKit</span>
+            <span class="tech-tag">Hardhat</span>
+            <span class="tech-tag">MongoDB</span>
+            <span class="tech-tag">Rootstock / EVM</span>
+          </div>
+        </article>
 
-    </div>
-  </div>
-</section>
+        <!-- ForestMaker -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-name">ForestMaker</div>
+              <div class="project-tagline">Real-world asset tokenization for reforestation</div>
+            </div>
+            <span class="project-year">2023</span>
+          </div>
+          <p class="project-desc">
+            A platform enabling investors to participate in forestry projects through tokenized assets. Each
+            reforestation project issues its own ERC-20 extended tokens. Investors purchase tokens representing their
+            stake and can claim periodic interest payments.
+          </p>
+          <ul class="project-highlights">
+            <li>Custom ERC-20 token extensions built with OpenZeppelin — including a debt token implementing CMTAT
+              standards with interest rate distribution at cutoff dates</li>
+            <li>Extensive smart contract testing that uncovered and resolved critical issues pre-launch</li>
+            <li>Token deployment orchestrated from a .NET backend</li>
+            <li>Flutter mobile app for token purchase and interest claiming, plus a Next.js dApp under development at
+              dapp.forestmaker.org</li>
+            <li>Angular backoffice for project administration</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">Solidity</span>
+            <span class="tech-tag">OpenZeppelin</span>
+            <span class="tech-tag">Hardhat</span>
+            <span class="tech-tag">Flutter</span>
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">Angular</span>
+            <span class="tech-tag">.NET</span>
+          </div>
+        </article>
 
-<div class="divider"></div>
+        <!-- EPA Tienda -->
+        <article class="project-card">
+          <div class="project-header">
+            <div>
+              <div class="project-name">EPA Tienda</div>
+              <div class="project-tagline">E-commerce platform for cosmetics &amp; hair supply</div>
+            </div>
+            <span class="project-year">2026</span>
+          </div>
+          <p class="project-desc">
+            A custom e-commerce store built from scratch for a cosmetics business in Santa Fe. Full implementation
+            including product catalog, payment integration, authentication, and cloud storage for product images.
+          </p>
+          <ul class="project-highlights">
+            <li>Mercado Pago payment integration with NextAuth authentication</li>
+            <li>PostgreSQL via Neon with Prisma ORM, Cloudflare R2 for media storage</li>
+            <li>Full deployment pipeline on Vercel with custom domain configuration</li>
+          </ul>
+          <div class="project-tech">
+            <span class="tech-tag">Next.js</span>
+            <span class="tech-tag">PostgreSQL</span>
+            <span class="tech-tag">Prisma</span>
+            <span class="tech-tag">Cloudflare R2</span>
+            <span class="tech-tag">Mercado Pago</span>
+            <span class="tech-tag">Tailwind CSS</span>
+          </div>
+        </article>
 
-<!-- STACK -->
-<section id="stack">
-  <div class="container">
-    <div class="section-label">Stack</div>
-    <div class="section-title">What I work with</div>
-    <div class="stack-grid">
-      <div class="stack-group">
-        <div class="stack-group-title">Smart Contracts</div>
-        <div class="stack-items">
-          Solidity<br>
-          Hardhat<br>
-          OpenZeppelin<br>
-          Ethers.js v6<br>
-          ERC-20 / CMTAT
-        </div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-group-title">Frontend</div>
-        <div class="stack-items">
-          Next.js<br>
-          React<br>
-          Angular<br>
-          Flutter<br>
-          Tailwind CSS
-        </div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-group-title">Backend & Data</div>
-        <div class="stack-items">
-          Node.js<br>
-          .NET<br>
-          MongoDB<br>
-          PostgreSQL / Prisma<br>
-          Cloudflare R2
-        </div>
-      </div>
-      <div class="stack-group">
-        <div class="stack-group-title">Networks & Tools</div>
-        <div class="stack-items">
-          Rootstock / EVM<br>
-          Reown AppKit<br>
-          DigitalOcean<br>
-          Vercel<br>
-          PM2 / rsync / CI-CD
-        </div>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="divider"></div>
+  <div class="divider"></div>
 
-<!-- CONTACT -->
-<section id="contact" class="contact-section">
-  <div class="container">
-    <div class="section-label">Get in touch</div>
-    <div class="section-title">Let's build something</div>
-    <p class="contact-text">
-      Open to Web3 consulting, smart contract development, and full-stack platform work. Based in Patagonia, available remotely.
-    </p>
-    <div class="contact-links">
-      <a href="https://www.linkedin.com/in/jonatan-duttweiler-676baa60" class="contact-link" target="_blank">LinkedIn</a>
-      <a href="https://github.com/jonduttweiler" class="contact-link" target="_blank">GitHub</a>
-      <a href="mailto:jonatanduttweiler@gmail.com" class="contact-link">Email</a>
+  <!-- STACK -->
+  <section id="stack">
+    <div class="container">
+      <div class="section-label">Stack</div>
+      <div class="section-title">What I work with</div>
+      <div class="stack-grid">
+        <div class="stack-group">
+          <div class="stack-group-title">Smart Contracts</div>
+          <div class="stack-items">
+            Solidity<br>
+            Hardhat<br>
+            OpenZeppelin<br>
+            Ethers.js v6<br>
+            ERC-20 / CMTAT
+          </div>
+        </div>
+        <div class="stack-group">
+          <div class="stack-group-title">Frontend</div>
+          <div class="stack-items">
+            Next.js<br>
+            React<br>
+            Angular<br>
+            Flutter<br>
+            Tailwind CSS
+          </div>
+        </div>
+        <div class="stack-group">
+          <div class="stack-group-title">Backend & Data</div>
+          <div class="stack-items">
+            Node.js<br>
+            .NET<br>
+            MongoDB<br>
+            PostgreSQL / Prisma<br>
+            Cloudflare R2
+          </div>
+        </div>
+        <div class="stack-group">
+          <div class="stack-group-title">Networks & Tools</div>
+          <div class="stack-items">
+            Rootstock / EVM<br>
+            Reown AppKit<br>
+            DigitalOcean<br>
+            Vercel<br>
+            PM2 / rsync / CI-CD
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="divider"></div>
+  <div class="divider"></div>
 
-<footer>
-  <div class="container">
-    Built from Patagonia · jonadev.dev · 2026
-  </div>
-</footer>
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <div class="section-label">Get in touch</div>
+      <div class="section-title">Let's build something</div>
+      <p class="contact-text">
+        Open to Web3 consulting, smart contract development, and full-stack platform work. Based in Patagonia, available
+        remotely.
+      </p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/jonatan-duttweiler-676baa60" class="contact-link"
+          target="_blank">LinkedIn</a>
+        <a href="https://github.com/jonduttweiler" class="contact-link" target="_blank">GitHub</a>
+        <a href="mailto:jonatanduttweiler@gmail.com" class="contact-link">Email</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <footer>
+    <div class="container">
+      Built from Patagonia · jonadev.dev · 2026
+    </div>
+  </footer>
 
 </body>
+
 </html>
